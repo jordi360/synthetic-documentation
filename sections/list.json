@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "name": "overview",
+    "href": "overview",
+    "title": "Overview",
+    "description": "Synthetic data generation for computer vision AI",
+    "label": "Intro",
+    "label_color": "red-light",
+    "color": "red"
+  },
+  {
+    "id": 2,
+    "name": "comparison",
+    "href": "comparison",
+    "title": "Paradigm Shift",
+    "description": "From needing hundreds of real samples to programmatic creation of images",
+    "label": "Background",
+    "label_color": "turquoise",
+    "color": "turquoise"
+  },
+  {
+    "id": 3,
+    "name": "3dmodels",
+    "href": "3dmodels",
+    "title": "Assets for Dynamic Scene Setup",
+    "description": "Machines, conveyor belts, products and labels",
+    "label": "Virtual Assets",
+    "label_color": "navy",
+    "color": "navy"
+  },
+  {
+    "id": 4,
+    "name": "json-structure",
+    "href": "json-structure",
+    "title": "Customizable Scene Configuration",
+    "description": "Using JSON files for customizable configuration and automating the generation of those files to execute batch rendering processes",
+    "label": "Development",
+    "label_color": "green",
+    "color": "green"
+  },
+  {
+    "id": 5,
+    "name": "anomalies",
+    "href": "anomalies",
+    "title": "Anomaly Generation and Annotation",
+    "description": "Absence, rotation, wrinkles, scratches and stains",
+    "label": "Development",
+    "label_color": "green",
+    "color": "green"
+  },
+  {
+    "id": 6,
+    "name": "docker",
+    "href": "docker",
+    "title": "Containerization",
+    "description": "",
+    "label": "Deployment",
+    "label_color": "red",
+    "color": "red"
+  },
+  {
+    "id": 7,
+    "name": "costs",
+    "href": "costs",
+    "title": "What Are  the Costs of Synthetic Data Generation?",
+    "description": "GPU and time consumption",
+    "label": "Cost Analysis",
+    "label_color": "yellow",
+    "color": "yellow"
+  },
+  {
+    "id": 8,
+    "name": "model-training",
+    "href": "model-training",
+    "title": "Model Training on Synthetic Data",
+    "description": "",
+    "label": "AI",
+    "label_color": "blue-light",
+    "color": "blue"
+  },
+  {
+    "id": 9,
+    "name": "model-results",
+    "href": "model-results",
+    "title": "Synthetic Computer Vision Results on Real Data",
+    "description": "",
+    "label": "AI",
+    "label_color": "blue-light",
+    "color": "blue"
+  }
+]
