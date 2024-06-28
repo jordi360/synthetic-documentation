@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+	<title>Synthetic AIS REV 360</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.jpg">
+	
+	<!-- Css -->
+	<link rel="stylesheet" href="../css/core.min.css" />
+
+	<!-- Font -->
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'> -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet" type='text/css'>
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet"> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"> -->
+	<link rel="stylesheet" href="../js/highlight/styles/monokai.min.css">
+	<!-- <link rel="stylesheet" href="../js/highlight/styles/gradient-dark.min.css"> -->
+	<!-- <link rel="stylesheet" href="../js/highlight/styles/stackoverflow-dark.min.css"> -->
+	<!-- <link rel="stylesheet" href="../js/highlight/styles/paraiso-dark.min.css"> -->
+	<!--[if lt IE 9]>
+    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+	<!-- Mobile Menu -->
+	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="push-in">
+		<div class="side-navigation-scroll-pane">
+			<div class="side-navigation-inner">
+				<div class="side-navigation-header">
+					<div class="logo">
+						<a class="weight-light" href="../"><strong>AIS REV 360</strong> Synthetic Environment Docs</a>
+					</div>
+					<div class="navigation-hide side-nav-hide">
+						<a href="#">
+							<span class="icon-cancel medium"></span>
+						</a>
+					</div>
+				</div>
+				<nav class="side-navigation">
+					<ul>
+						<li>
+							<a href="../">Home</a>
+						</li>
+						<li>
+							<a class="contains-sub-menu" href="#">Sections</a>
+							<ul id="section_list_mobile" class="sub-menu">
+							
+							</ul>
+						<li>
+					</ul>
+				</nav>
+				
+			</div>
+		</div>
+	</aside>
+	<!-- Mobile Menu End -->
+
+	<div class="wrapper">
+		<div class="wrapper-inner">
+		
+			<!-- Header -->
+			<header class="nav-bar nav-main">
+				<div class="row">
+					<div class="column width-12">
+						<div class="logo">
+							<a class="weight-light" href="../"><strong>AIS REV 360</strong> Synthetic Environment Docs</a>
+						</div>
+						<nav class="navigation nav-block secondary-navigation nav-right no-margin-left">
+							<ul>
+								<li>
+									<li class="aux-navigation hide">
+									<!-- Aux Navigation -->
+									<a href="#" class="navigation-show side-nav-show nav-icon">
+										<span class="icon-menu"></span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="navigation nav-block primary-navigation nav-right">
+							
+						</nav>
+					</div>
+				</div>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content -->
+			<div class="content clearfix">
+				<div class="section-block intro-title-1 small">
+					<div class="row">
+						<div class="column width-12">
+							<div class="title-container">
+								<div class="title-container-inner">
+									<h1 id="section_title"></h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row large">
+					<div id="section_content" class="column width-9 push-3 content-inner">
+
+						
+					</div>
+					<aside class="sidebar column width-3 pull-9">
+						<h3 class="widget-title">Sections</h3>
+						<ul id="section_list" class="list-group width-11">
+							
+						</ul>
+					</aside>
+				</div>
+			</div>
+			<!-- Content End -->
+
+			<!-- Footer -->
+			<footer class="footer">
+				<div class="row large center">
+					<div class="column width-12">
+						<p class="footer-text">Rosepetal AI</p>
+						<nav id="footer-navigation" class="navigation nav-center">
+							<ul>
+								<li class="current">
+									<a href="#">synthetic environment docs</a>
+								</li>
+							</ul>
+						</nav>
+						<p class="copyright">&copy; <span id="year_copy"></span> Rosepetal AI. All rights reserved.</p>
+						<a href="#" class="scroll-to-top icon-up bkg-hover-white"></a>
+					</div>
+				</div> 
+			</footer>
+			<!-- End Footer -->
+		</div>
+	</div>
+
+	<!-- Js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../js/timber.master.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+	<script type="text/javascript">
+        
+        const defaultId = 'video-pharma'
+        let sectionId = getParameterByName('s');
+		if (sectionId == null) sectionId = defaultId
+
+        const rootPath = `.`;
+		const sectionPath = `${rootPath}/list.json`;
+        sectionIdPath = `${rootPath}/${sectionId}.html`
+
+		getSectionInfo(sectionPath, sectionIdPath, sectionId)
+		console.log('sectionPath',sectionPath);
+		console.log('sectionIdPath',sectionIdPath);
+
+		function getSectionInfo(sectionPath, sectionIdPath, sectionId) {
+
+			Promise.all([
+				fetch(sectionPath).then((data) => { if (data.ok) return data.json()}),
+                fetch(sectionIdPath).then((data) => { if (data.ok) return data.text()}),
+			]).then(([sections, section]) => {
+                if (typeof sections !== 'undefined' && typeof section !== 'undefined') {
+					console.log('Success fetching data')
+                    setSection(sections, section, sectionId)
+				} else {
+					// Force the viewer to get the default section
+					console.warn('Error fetching fallback to default section')
+					getSectionInfo(sectionPath,`${rootPath}/${defaultId}.html`, defaultId);
+				}
+			})
+		}
+
+		function setSection (sections, section, sectionId) 
+		{
+			
+
+            const section_title = document.getElementById('section_title');
+			const section_content = document.getElementById('section_content');
+			const section_list = document.getElementById('section_list');
+			const section_list_mobile = document.getElementById('section_list_mobile');
+
+			section_listHtml = ``
+			section_list_mobileHtml = ``
+
+			let currentTitle
+
+			// Prepare the section list for aside and menu mobile
+			sections.forEach(section => {
+
+				// Define in case is the current class
+                let current = ``
+                let current_icon = ``
+                if(section.href == sectionId ) {
+					// Just put the title to the document of the active
+					currentTitle = section.title
+					current = `class="current"`
+					current_icon = `<span class="icon-right-open-mini"></span>`
+				}
+
+                let label = ``
+				if(typeof section.label !== 'undefined' && section.label != null) {
+					let label_color = `green`
+					let label_text_color = `white`
+					if(typeof section.label_color !== 'undefined' && section.label_color != null) label_color = section.label_color 
+					if(typeof section.label_text_color !== 'undefined' && section.label_text_color != null) label_text_color = section.label_text_color 
+					label = `<span class="label bkg-${label_color} color-${label_text_color} rounded small">${section.label}</span>`
+				}
+
+                section_listHtml += `
+                    <li ${current}>
+                        ${current_icon}
+                        <a href="./?s=${section.href}">${section.title} ${label}</a>
+                    </li>
+                `
+
+				section_list_mobileHtml += `
+                    <li ${current}>
+                        <a href="./?s=${section.href}">${section.title} ${label}</a>
+                    </li>
+                `
+            
+            })
+
+			document.title = currentTitle 
+			section_title.innerHTML = currentTitle
+			section_content.innerHTML = section
+			section_list.innerHTML = section_listHtml
+			section_list_mobile.innerHTML = section_list_mobileHtml
+
+			// Write year in copyright
+			document.getElementById('year_copy').innerHTML = new Date().getFullYear();
+
+			// Prepare the highlighting for the code and add the copy button
+			highligtCode();
+			setCopyCode();
+			
+        }
+
+        function getParameterByName(name, url = window.location.href) {
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+
+		function highligtCode () {
+			document.querySelectorAll('pre code').forEach((el) => {
+				hljs.highlightElement(el);
+			});
+		}
+
+
+		function setCopyCode () {
+
+
+			// Code blocks
+			$( '.code-snippet' ).each( function( i ){
+
+				// Some variables
+				var pre = $( this ).find( 'pre' );
+				var code = $( this ).find( 'code' );
+				var content = code.html();
+				var ctcButton;
+				var copyCode;
+
+				// Create and append ctc button
+				ctcButton =  $( '<button data-clipboard-target="#snippet-' + i + '" class="button rounded small bkg-charcoal color-white bkg-hover-charcoal-light color-hover-white copy-to-clipboard">Copy</button>' );
+				code.attr( 'id', 'snippet-' + i );
+				ctcButton.appendTo( pre );
+
+				// Add clipboard event
+				copyCode = new Clipboard( '.copy-to-clipboard' );
+				copyCode.on( 'success', function(event) {
+					event.clearSelection();
+					event.trigger.textContent = 'Copied';
+					window.setTimeout(function() {
+						event.trigger.textContent = 'Copy';
+					}, 2000 );
+				});
+				copyCode.on('error', function(event) {
+					event.trigger.textContent = 'Press "Ctrl + C" to copy';
+					window.setTimeout(function() {
+						event.trigger.textContent = 'Copy';
+					}, 2000 );
+				});
+
+			});
+		}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+	<title>Synthetic AIS REV 360</title>
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.jpg">
+	
+	<!-- Css -->
+	<link rel="stylesheet" href="css/core.min.css" />
+
+	<!-- Font -->
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'> -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet" type='text/css'>
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet"> -->
+
+
+	<!--[if lt IE 9]>
+    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body class="homepage">
+
+	<!-- Mobile Menu -->
+	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="push-in">
+		<div class="side-navigation-scroll-pane">
+			<div class="side-navigation-inner">
+				<div class="side-navigation-header">
+					<div class="logo">
+						<a class="weight-light" href="#"><strong>AIS REV</strong> 360 Docs</a>
+					</div>
+					<div class="navigation-hide side-nav-hide">
+						<a href="#">
+							<span class="icon-cancel medium"></span>
+						</a>
+					</div>
+				</div>
+				<nav class="side-navigation">
+					<ul>
+						<li class="current">
+							<a href="#">Home</a>
+						</li>
+						<li>
+							<a class="contains-sub-menu" href="#">Sections</a>
+							<ul id="section_list_mobile"  class="sub-menu">
+
+							</ul>
+						<li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</aside>
+	<!-- Mobile Menu End -->
+
+	<div class="wrapper">
+		<div class="wrapper-inner">
+
+			<!-- Header -->
+			<header class="nav-bar nav-main">
+				<div class="row">
+					<div class="column width-12">
+						<div class="logo">
+							<a class="weight-light" href=""><strong>AIS REV 360</strong> Synthetic Environment Docs</a>
+						</div>
+						<nav class="navigation nav-block secondary-navigation nav-right no-margin-left">
+							<ul>
+								<li>
+									<li class="aux-navigation hide">
+									<!-- Aux Navigation -->
+									<a href="#" class="navigation-show side-nav-show nav-icon">
+										<span class="icon-menu"></span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="navigation nav-block primary-navigation nav-right">
+							
+						</nav>
+					</div>
+				</div>
+			</header>
+			<!-- Header End -->	
+
+			<!-- Content -->
+			<div class="content clearfix">
+				<div class="section-block intro-title-1">
+					<div class="row">
+						<div class="column width-12">
+							<div class="title-container">
+								<div class="title-container-inner center">
+									<h1 class="mb-10 ">AIS REV 360</h1>
+									<p class="lead color-white transparent-element">Synthetic Data Generation with Blender and Python</p>
+									<!-- <a href="sections/requirements.html" class="button border-white border-hover-white color-white color-hover-white large rounded">Get Started</a> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row large">
+					<div class="column width-12">
+						<h2 id="table-of-contents">Table of Contents</h2>
+						<!-- <p><strong>Note:</strong> If you are are familiar with HTML and this is not your first rodeo, you can skip the sections marked by a blue dot. If your new to HTML we strongly suggest you read all sections.</p> -->
+						<div class="row">
+							<div class="column width-12">
+								<ol id="sectionList" class="list-group large">
+									
+									
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Content End -->
+
+			<!-- Footer -->
+			<footer class="footer">
+				<div class="row large center">
+					<div class="column width-12">
+						<p class="footer-text">Rosepetal AI</p>
+						<nav id="footer-navigation" class="navigation nav-center">
+							<ul>
+								<li class="current">
+									<a href="#">synthetic environment docs</a>
+								</li>
+							</ul>
+						</nav>
+						<p class="copyright">&copy; <span id="year_copy"></span> Rosepetal AI. All rights reserved.</p>
+						<a href="#" class="scroll-to-top icon-up bkg-hover-white"></a>
+					</div>
+				</div> 
+			</footer>
+			<!-- End Footer -->
+		</div>
+	</div>
+
+	<!-- Js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/timber.master.min.js"></script>
+	<script type="text/javascript">
+
+		const rootPath = `./sections`;
+		const sectionPath = `${rootPath}/list.json`;
+
+		getSectionInfo(sectionPath)
+		console.log('sectionPath',sectionPath);
+
+		function getSectionInfo(sectionPath) {
+
+			Promise.all([
+				fetch(sectionPath).then((data) => { if (data.ok) return data.json()})
+			]).then(([sections]) => {
+				init(sections)
+			})
+		}
+
+		function init (sections) 
+		{
+
+			const section_list = document.getElementById('sectionList');
+			const section_list_mobile = document.getElementById('section_list_mobile');
+			
+
+
+			section_listHtml = ``
+			section_list_mobileHtml = ``
+			sections.forEach(section => {
+
+				// console.log(process)
+				if(typeof section.date === 'undefined' || section.date === null) section.date = new Date().toISOString().slice(0, 10)
+				
+				let span = ``
+				if(typeof section.label !== 'undefined' && section.label !== null) span = `<span class="label bkg-${section.label_color} color-white rounded">${section.label}</span>`
+				
+				section_listHtml += `
+					<li>
+						<span class="indicator bkg-${section.color}-light"></span> 
+						<!-- <span>${section.date}</span> --> 
+						<a href="sections/?s=${section.href}">${section.title}</a> 
+						${span}
+						<p>${section.description}</p>
+					</li>
+				`
+
+				section_list_mobileHtml += `
+                    <li>
+                        <a href="./sections/?s=${section.href}">${section.title}</a>
+                    </li>
+                `
+				
+			});
+
+			section_list.innerHTML = section_listHtml;
+			section_list_mobile.innerHTML = section_list_mobileHtml;
+
+
+			// Write year in copyright
+			document.getElementById('year_copy').innerHTML = new Date().getFullYear();
+
+		
+		}
+	</script>
+</body>
+</html>

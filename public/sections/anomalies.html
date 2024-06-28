@@ -1,0 +1,81 @@
+<h2 id="header-type">Synthetic Anomalies</h2>
+<p>Synthetic anomalies refer to artificially generated irregularities that 
+    mimic real-world imperfections or unusual patterns within a dataset. 
+    These anomalies are key for enhancing the generalization and overall performance of AI systems, especially in areas like quality control and anomaly detection. </p>
+<p>Our application is capable of dynamically generating various types of imperfections, including the 
+absence of labels, undesired rotation, wrinkles, scratches and stains. 
+Each type of anomaly is designed to replicate common defects found in real-world products.</p>
+<hr>
+
+<h3 id="header-type">Explored approaches</h3>
+<p>Before arriving at our optimized method, we explored several approaches to dynamically generating imperfections.
+</p>
+<p>Initially, we attempted to apply complex imperfection shaders for scratches and use vertex group deformation with sculpting techniques for creating wrinkles. 
+    Examples of the results we got are shown in the images below.
+</p>
+<div class="gif">
+    <img src="../assets/images/shader.jpg" alt="" width="60%">
+    <img src="../assets/images/wrinkles.jpg" alt="" width="33%">
+</div>
+<br>
+<p>However, these methods proved to be overly complex and impractical to implement using Python.</p>
+<p>As a result, we decided to develop a more efficient approach by automating the creation of
+bump map libraries for each type of imperfection. Additionally, rotation and absence anomalies are easily configured using the labels.json file.
+</p>
+<hr>
+
+
+<h3 id="header-type">Absence</h3>
+<p></p>
+<div class="gif">
+    <img src="../assets/images/absence2.jpg" alt="" width="40%">
+    <img src="../assets/images/absence3.jpg" alt="" width="40%">
+</div>
+<hr>
+
+<h3 id="header-type">Wrinkles</h3>
+<p></p>
+<div class="gif">  
+    <img src="../assets/images/wrinkle.jpg" alt="" width="80%">
+</div>
+<hr>
+
+<h3 id="header-type">Stains</h3>
+<p></p>
+<div class="gif">
+    <img src="../assets/images/stain1.jpg" alt="" width="80%">
+</div>
+<hr>
+
+
+<h3 id="header-type">Rotation</h3>
+<p></p>
+<div class="gif">
+    <img src="../assets/images/rotation1.jpg" alt="" width="40%">
+</div>
+<hr>
+
+
+<h3 id="header-type">Overlapping</h3>
+<p></p>
+<div class="gif">
+    <img src="../assets/images/overlapping1.jpg" alt="" width="40%">
+    <img src="../assets/images/overlapping2.jpg" alt="" width="40%">
+</div>
+<hr>
+<h3 id="header-type">Scratches</h3>
+<p></p>
+<div class="gif">
+</div>
+<hr>
+
+<h3 id="header-type">Tools for bump map generation</h3>
+<p></p>
+<div class="gif">
+</div>
+<hr>
+
+<h3 id="header-type">Automatic annotation</h3>
+<p></p>
+<div class="gif">
+</div>
